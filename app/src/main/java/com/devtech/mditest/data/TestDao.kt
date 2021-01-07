@@ -20,8 +20,18 @@ interface TestDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertFavorite(favorite: Favorite)
 
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insertCart(cart: Cart)
+
     @Query("SELECT * FROM category_table")
     fun getCategory(): Flow<List<Category>>
+
+    @Query("SELECT COUNT(cartId) FROM cart_table")
+    fun getCartCount(): Flow<Int>
+
+    @Transaction
+    @Query("SELECT * FROM product_table")
+    fun getProductAndCart(): Flow<List<ProductAndCart>>
 
     @Transaction
     @Query("SELECT * FROM product_table")

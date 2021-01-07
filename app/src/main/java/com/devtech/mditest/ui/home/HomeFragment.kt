@@ -16,6 +16,7 @@ import com.devtech.mditest.R
 import com.devtech.mditest.data.entity.Category
 import com.devtech.mditest.data.entity.Product
 import com.devtech.mditest.databinding.HomeFragmentBinding
+import com.devtech.mditest.ui.MainActivity
 import com.devtech.mditest.utils.snackBar
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collect
@@ -57,8 +58,14 @@ class HomeFragment : Fragment(), CategoryAdapter.OnItemClickListener, ProductAda
                 categoryAdapter.submitList(it)
             })
             viewModel.categoryType.value = "1"
-            viewModel.productByType.observe(viewLifecycleOwner, {
-                productAdapter.submitList(it[0].product)
+            viewModel.productByType.observe(viewLifecycleOwner, {  product ->
+                productAdapter.submitList(product.find { it.category.categoryId == 1L }?.product)
+            })
+            viewModel.countCart.observe(viewLifecycleOwner,{
+                if(it > 0){
+                    val badge = (activity as MainActivity).navigationView.getOrCreateBadge(R.id.navigation_cart)
+                    badge.number = it
+                }
             })
         }
     }

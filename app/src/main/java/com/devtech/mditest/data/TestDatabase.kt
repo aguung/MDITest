@@ -12,7 +12,10 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 import javax.inject.Provider
 
-@Database(entities = [Category::class, Product::class, ProductCategoryCrossRef::class, Favorite::class], version = 1)
+@Database(
+    entities = [Category::class, Product::class, ProductCategoryCrossRef::class, Favorite::class, Cart::class],
+    version = 1
+)
 @TypeConverters(ColorConverter::class)
 abstract class TestDatabase : RoomDatabase() {
 
@@ -40,7 +43,7 @@ abstract class TestDatabase : RoomDatabase() {
                         description = "Test Wood Chair",
                         price = 100000,
                         quantity = 4,
-                        color = listOf(R.color.merah,R.color.biru,R.color.orange),
+                        color = listOf(R.color.merah, R.color.biru, R.color.orange),
                     )
                 )
                 dao.insertPoduct(
@@ -50,7 +53,7 @@ abstract class TestDatabase : RoomDatabase() {
                         description = "Test Relaxe Chair",
                         price = 150000,
                         quantity = 8,
-                        color = listOf(R.color.merah,R.color.hijau,R.color.biru),
+                        color = listOf(R.color.merah, R.color.hijau, R.color.biru),
                     )
                 )
                 dao.insertPoduct(
@@ -60,7 +63,7 @@ abstract class TestDatabase : RoomDatabase() {
                         description = "Test Relaxe Chair Second",
                         price = 125000,
                         quantity = 12,
-                        color = listOf(R.color.orange,R.color.hijau,R.color.biru),
+                        color = listOf(R.color.orange, R.color.hijau, R.color.biru),
                     )
                 )
                 dao.insertProductCategoryCrossRef(

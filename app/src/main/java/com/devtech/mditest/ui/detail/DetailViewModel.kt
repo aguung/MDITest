@@ -2,13 +2,12 @@ package com.devtech.mditest.ui.detail
 
 import androidx.hilt.Assisted
 import androidx.hilt.lifecycle.ViewModelInject
-import androidx.lifecycle.SavedStateHandle
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.asFlow
-import androidx.lifecycle.asLiveData
+import androidx.lifecycle.*
 import com.devtech.mditest.data.TestDao
-import kotlinx.coroutines.flow.flatMapLatest
-import kotlinx.coroutines.flow.map
+import com.devtech.mditest.data.entity.Cart
+import kotlinx.coroutines.FlowPreview
+import kotlinx.coroutines.flow.*
+import kotlinx.coroutines.launch
 
 class DetailViewModel @ViewModelInject constructor(
     private val testDao: TestDao,
@@ -22,4 +21,9 @@ class DetailViewModel @ViewModelInject constructor(
     }.flatMapLatest { testDao.getCategoryWithProduct(it) }
 
     val productByType = productFlow.asLiveData()
+
+    fun addCart(cart: Cart) = viewModelScope.launch {
+        testDao.insertCart(cart)
+    }
+
 }

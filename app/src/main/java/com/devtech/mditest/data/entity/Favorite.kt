@@ -8,7 +8,7 @@ import kotlinx.parcelize.Parcelize
 @Entity(tableName = "favorite_table")
 @Parcelize
 data class Favorite(
-    val userOwnerId: Long,
+    val favoriteOwnerId: Long,
     val created: Long = System.currentTimeMillis(),
     @PrimaryKey(autoGenerate = true) val favoriteId: Long = 0
 ) : Parcelable

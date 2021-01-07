@@ -1,13 +1,17 @@
 package com.devtech.mditest.ui.cart
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
+import androidx.hilt.Assisted
+import androidx.hilt.lifecycle.ViewModelInject
+import androidx.lifecycle.*
+import com.devtech.mditest.data.TestDao
+import kotlinx.coroutines.flow.map
 
-class CartViewModel : ViewModel() {
+class CartViewModel @ViewModelInject constructor(
+    private val testDao: TestDao,
+    @Assisted private val state: SavedStateHandle
+) : ViewModel() {
 
-    private val _text = MutableLiveData<String>().apply {
-        value = "This is dashboard Fragment"
-    }
-    val text: LiveData<String> = _text
+    val cart = testDao.getProductAndCart().map {
+        it.filter { data -> data.cart !== null }
+    }.asLiveData()
 }

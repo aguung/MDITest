@@ -16,6 +16,8 @@ class HomeViewModel @ViewModelInject constructor(
 
     val category = testDao.getCategory().asLiveData()
 
+    val countCart = testDao.getCartCount().asLiveData()
+
     val categoryType = state.getLiveData("category", "")
 
     private val productFlow = categoryType.asFlow().map {

@@ -7,7 +7,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
-import androidx.recyclerview.widget.RecyclerView
 import com.azoft.carousellayoutmanager.CarouselLayoutManager
 import com.devtech.mditest.data.entity.Product
 import com.devtech.mditest.databinding.DetailFragmentBinding
@@ -15,7 +14,8 @@ import dagger.hilt.android.AndroidEntryPoint
 
 import com.azoft.carousellayoutmanager.CarouselZoomPostLayoutListener
 import com.azoft.carousellayoutmanager.CenterScrollListener
-import com.devtech.mditest.utils.snackBar
+import com.devtech.mditest.data.entity.Cart
+import kotlinx.coroutines.FlowPreview
 
 
 @AndroidEntryPoint
@@ -53,15 +53,17 @@ class DetailFragment : Fragment(), DetailAdapter.OnItemClickListener {
         }
         viewLifecycleOwner.lifecycleScope.launchWhenCreated {
             viewModel.categoryType.value = "1"
-            viewModel.productByType.observe(viewLifecycleOwner, {
-                println("Data nya : ${it[0].product}")
-                detailAdapter.submitList(it[0].product)
+            viewModel.productByType.observe(viewLifecycleOwner, { product ->
+                detailAdapter.submitList(product.find { it.category.categoryId == 1L }?.product)
             })
+        }
+        binding.btnCart.setOnClickListener {
+            viewModel.addCart(Cart(cartOwnerId = data?.productId!!, quantity = 1))
         }
     }
 
     override fun onItemClick(product: Product) {
-        binding.root.snackBar("Clicked Product : ${product.name}")
+
     }
 
 }

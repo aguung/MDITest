@@ -8,14 +8,10 @@
         android:layout_margin="8dp"
         >
 
-    <ImageView
+    <com.google.android.material.radiobutton.MaterialRadioButton
             android:id="@+id/radioCart"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:checked="true"
-            android:src="@drawable/ic_baseline_done_24"
-            android:backgroundTint="@color/colorPrimary"
-            android:background="@drawable/circle_cart_cheked"
             app:layout_constraintBottom_toBottomOf="@+id/imageProduct"
             app:layout_constraintTop_toTopOf="@+id/imageProduct"
             app:layout_constraintStart_toStartOf="parent"
@@ -80,24 +76,23 @@
             android:textAppearance="@style/TextAppearance.AppCompat.Medium"
             />
 
-    <com.google.android.material.button.MaterialButton
+    <ImageButton
             android:id="@+id/btnMin"
             android:layout_width="32dp"
             android:layout_height="32dp"
-            android:text="-"
-            app:strokeColor="@color/black"
-            app:strokeWidth="2dp"
+            android:src="@drawable/ic_baseline_minus_24"
             app:layout_constraintBottom_toBottomOf="@+id/txtPrice"
             app:layout_constraintTop_toTopOf="@+id/txtPrice"
             app:layout_constraintEnd_toStartOf="@+id/txtQuatinty"
             android:layout_marginEnd="8dp"
             />
 
-    <com.google.android.material.button.MaterialButton
+    <TextView
             android:id="@+id/txtQuatinty"
             android:layout_width="32dp"
             android:layout_height="0dp"
             android:text="10"
+            android:gravity="center"
             app:strokeColor="@color/black"
             app:strokeWidth="2dp"
             app:layout_constraintEnd_toStartOf="@+id/btnAdd"
@@ -106,13 +101,11 @@
             android:layout_marginEnd="8dp"
             />
 
-    <com.google.android.material.button.MaterialButton
+    <ImageButton
             android:id="@+id/btnAdd"
             android:layout_width="32dp"
             android:layout_height="32dp"
-            android:text="+"
-            app:strokeColor="@color/black"
-            app:strokeWidth="2dp"
+            android:src="@drawable/ic_baseline_add_24"
             app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginEnd="8dp"
             app:layout_constraintBottom_toBottomOf="@+id/btnMin"

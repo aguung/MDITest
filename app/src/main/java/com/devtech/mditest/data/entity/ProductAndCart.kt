@@ -3,11 +3,11 @@ package com.devtech.mditest.data.entity
 import androidx.room.Embedded
 import androidx.room.Relation
 
-data class ProductAndFavorite(
+data class ProductAndCart(
     @Embedded val product: Product,
     @Relation(
         parentColumn = "productId",
-        entityColumn = "favoriteOwnerId"
+        entityColumn = "cartOwnerId"
     )
-    val favorite: Favorite
+    val cart: Cart?
 )

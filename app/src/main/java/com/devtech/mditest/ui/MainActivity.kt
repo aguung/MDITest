@@ -14,21 +14,23 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
+    lateinit var navigationView: BottomNavigationView
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        val navView: BottomNavigationView = findViewById(R.id.nav_view)
+        navigationView = findViewById(R.id.nav_view)
 
         val navController = findNavController(R.id.nav_host_fragment)
-        navView.setupWithNavController(navController)
+        navigationView.setupWithNavController(navController)
         navController.addOnDestinationChangedListener { _, destination, _ ->
             when (destination.id) {
-                R.id.navigation_home -> navView.visibility = View.VISIBLE
-                R.id.navigation_cart -> navView.visibility = View.VISIBLE
-                R.id.navigation_favorite -> navView.visibility = View.VISIBLE
-                R.id.navigation_location -> navView.visibility = View.VISIBLE
-                R.id.navigation_person -> navView.visibility = View.VISIBLE
-                else -> navView.visibility = View.GONE
+                R.id.navigation_home -> navigationView.visibility = View.VISIBLE
+                R.id.navigation_cart -> navigationView.visibility = View.VISIBLE
+                R.id.navigation_favorite -> navigationView.visibility = View.VISIBLE
+                R.id.navigation_location -> navigationView.visibility = View.VISIBLE
+                R.id.navigation_person -> navigationView.visibility = View.VISIBLE
+                else -> navigationView.visibility = View.GONE
             }
         }
     }
