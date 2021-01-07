@@ -2,11 +2,12 @@
 <com.google.android.material.card.MaterialCardView
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_margin="8dp"
         app:cardCornerRadius="8dp"
         app:cardElevation="8dp"
+        android:layout_gravity="center"
         >
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -14,9 +15,10 @@
             android:layout_height="wrap_content"
             >
         <ImageView
-                android:layout_width="wrap_content"
+                android:id="@+id/imageProduct"
+                android:layout_width="300dp"
                 android:layout_height="300dp"
-                android:scaleType="centerCrop"
+                android:scaleType="center"
                 android:src="@drawable/chair_product"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
