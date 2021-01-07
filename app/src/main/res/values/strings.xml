@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">MDITest</string>
+    <string name="title_home">Home</string>
+    <string name="title_cart">Cart</string>
+    <string name="title_favorite">Favorite</string>
+    <string name="title_location">Location</string>
+    <string name="title_person">Person</string>
+</resources>

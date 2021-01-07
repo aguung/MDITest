@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:id="@+id/mobile_navigation"
+            app:startDestination="@+id/navigation_home">
+
+    <fragment
+            android:id="@+id/navigation_home"
+            android:name="com.devtech.mditest.ui.home.HomeFragment"
+            android:label="@string/title_home"
+            tools:layout="@layout/home_fragment"/>
+
+    <fragment
+            android:id="@+id/navigation_cart"
+            android:name="com.devtech.mditest.ui.cart.CartFragment"
+            android:label="@string/title_cart"
+            tools:layout="@layout/cart_fragment"/>
+
+    <fragment
+            android:id="@+id/navigation_favorite"
+            android:name="com.devtech.mditest.ui.favorite.FavoriteFragment"
+            android:label="@string/title_favorite"
+            tools:layout="@layout/favorite_fragment"/>
+    <fragment
+            android:id="@+id/navigation_location"
+            android:name="com.devtech.mditest.ui.location.LocationFragment"
+            android:label="location_fragment"
+            tools:layout="@layout/location_fragment"/>
+    <fragment
+            android:id="@+id/navigation_person"
+            android:name="com.devtech.mditest.ui.person.PersonFragment"
+            android:label="person_fragment"
+            tools:layout="@layout/person_fragment"/>
+    <fragment
+            android:id="@+id/detailFragment"
+            android:name="com.devtech.mditest.ui.detail.DetailFragment"
+            android:label="detail_fragment"
+            tools:layout="@layout/detail_fragment"/>
+</navigation>

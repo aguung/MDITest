@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        >
+
+    <ImageView
+            android:id="@+id/radioCart"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:src="@drawable/ic_baseline_done_24"
+            android:backgroundTint="@color/colorPrimary"
+            android:background="@drawable/circle_cart_cheked"
+            app:layout_constraintBottom_toBottomOf="@+id/imageProduct"
+            app:layout_constraintTop_toTopOf="@+id/imageProduct"
+            app:layout_constraintStart_toStartOf="parent"
+            />
+
+    <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/imageProduct"
+            style="@style/ShapeAppearanceOverlay.App.CornerSize8Percent"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:scaleType="centerCrop"
+            app:srcCompat="@drawable/chair_product"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/radioCart"
+            android:layout_marginStart="8dp"
+            />
+
+    <TextView
+            android:id="@+id/txtProduct"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:text="Product Name"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/imageProduct"
+            app:layout_constraintTop_toTopOf="@+id/imageProduct"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:layout_marginStart="16dp"
+            />
+
+    <TextView
+            android:id="@+id/txtDescription"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Product Description"
+            android:maxLines="2"
+            android:ellipsize="end"
+            app:layout_constraintTop_toBottomOf="@+id/txtProduct"
+            app:layout_constraintStart_toStartOf="@+id/txtProduct"
+            app:layout_constraintEnd_toEndOf="@+id/txtProduct"
+            />
+
+    <TextView
+            android:id="@+id/viewPrice"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Price"
+            app:layout_constraintStart_toStartOf="@+id/txtDescription"
+            app:layout_constraintBottom_toTopOf="@+id/txtPrice"
+            />
+
+    <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="$ 79,54"
+            app:layout_constraintBottom_toBottomOf="@+id/imageProduct"
+            android:layout_marginBottom="8dp"
+            app:layout_constraintStart_toStartOf="@+id/viewPrice"
+            android:id="@+id/txtPrice"
+            android:textStyle="bold"
+            android:textColor="@color/colorPrimary"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            />
+
+    <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnMin"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:text="-"
+            app:strokeColor="@color/black"
+            app:strokeWidth="2dp"
+            app:layout_constraintBottom_toBottomOf="@+id/txtPrice"
+            app:layout_constraintTop_toTopOf="@+id/txtPrice"
+            app:layout_constraintEnd_toStartOf="@+id/txtQuatinty"
+            android:layout_marginEnd="8dp"
+            />
+
+    <com.google.android.material.button.MaterialButton
+            android:id="@+id/txtQuatinty"
+            android:layout_width="32dp"
+            android:layout_height="0dp"
+            android:text="10"
+            app:strokeColor="@color/black"
+            app:strokeWidth="2dp"
+            app:layout_constraintEnd_toStartOf="@+id/btnAdd"
+            app:layout_constraintBottom_toBottomOf="@+id/btnMin"
+            app:layout_constraintTop_toTopOf="@+id/btnMin"
+            android:layout_marginEnd="8dp"
+            />
+
+    <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnAdd"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:text="+"
+            app:strokeColor="@color/black"
+            app:strokeWidth="2dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="8dp"
+            app:layout_constraintBottom_toBottomOf="@+id/btnMin"
+            app:layout_constraintTop_toTopOf="@+id/btnMin"
+            />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
