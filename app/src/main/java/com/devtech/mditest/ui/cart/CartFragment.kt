@@ -39,7 +39,6 @@ class CartFragment : Fragment(),CartAdapter.OnItemClickListener {
         }
         viewLifecycleOwner.lifecycleScope.launchWhenCreated {
             viewModel.cart.observe(viewLifecycleOwner,{
-                println("Data cart : $it")
                 cartAdapter.submitList(it)
             })
         }

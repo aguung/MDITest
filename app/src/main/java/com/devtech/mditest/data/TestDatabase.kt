@@ -84,6 +84,7 @@ abstract class TestDatabase : RoomDatabase() {
                         productId = 3
                     )
                 )
+                dao.insertCart(Cart(cartOwnerId = 1, quantity = 1))
             }
         }
     }

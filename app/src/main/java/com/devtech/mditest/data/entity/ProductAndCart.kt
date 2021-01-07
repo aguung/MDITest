@@ -9,5 +9,5 @@ data class ProductAndCart(
         parentColumn = "productId",
         entityColumn = "cartOwnerId"
     )
-    val cart: Cart?
+    val cart: Cart
 )

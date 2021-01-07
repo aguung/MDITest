@@ -1,6 +1,7 @@
 package com.devtech.mditest.data
 
 
+import androidx.lifecycle.LiveData
 import androidx.room.*
 import com.devtech.mditest.data.entity.*
 import kotlinx.coroutines.flow.Flow
@@ -30,7 +31,7 @@ interface TestDao {
     fun getCartCount(): Flow<Int>
 
     @Transaction
-    @Query("SELECT * FROM product_table")
+    @Query("SELECT * FROM product_table WHERE productId IN (SELECT DISTINCT(cartOwnerId) FROM cart_table)")
     fun getProductAndCart(): Flow<List<ProductAndCart>>
 
     @Transaction

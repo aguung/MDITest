@@ -11,7 +11,5 @@ class CartViewModel @ViewModelInject constructor(
     @Assisted private val state: SavedStateHandle
 ) : ViewModel() {
 
-    val cart = testDao.getProductAndCart().map {
-        it.filter { data -> data.cart !== null }
-    }.asLiveData()
+    val cart = testDao.getProductAndCart().asLiveData()
 }
