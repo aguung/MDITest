@@ -25,13 +25,13 @@ interface TestDao {
 
     @Transaction
     @Query("SELECT * FROM product_table")
-    fun getProductWithCategory(): List<ProductWithCategory>
+    fun getProductWithCategory(): Flow<List<ProductWithCategory>>
 
     @Transaction
     @Query("SELECT * FROM category_table WHERE categoryId = :category")
-    fun getCategoryWithProduct(category: Int): List<CategoryWithProduct>
+    fun getCategoryWithProduct(category: Int): Flow<List<CategoryWithProduct>>
 
     @Transaction
     @Query("SELECT * FROM product_table")
-    fun getProductAndFavorite(): List<ProductAndFavorite>
+    fun getProductAndFavorite(): Flow<List<ProductAndFavorite>>
 }

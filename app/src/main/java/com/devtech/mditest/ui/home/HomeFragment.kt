@@ -10,17 +10,20 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.devtech.mditest.R
 import com.devtech.mditest.data.entity.Category
 import com.devtech.mditest.data.entity.Product
 import com.devtech.mditest.databinding.HomeFragmentBinding
+import com.devtech.mditest.utils.snackBar
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.flow.flatMapLatest
 import kotlinx.coroutines.flow.map
 
 @AndroidEntryPoint
-class HomeFragment : Fragment(), CategoryAdapter.OnItemClickListener,ProductAdapter.OnItemClickListener {
+class HomeFragment : Fragment(), CategoryAdapter.OnItemClickListener, ProductAdapter.OnItemClickListener {
 
     private val viewModel: HomeViewModel by viewModels()
     private val binding: HomeFragmentBinding by lazy {
@@ -54,19 +57,22 @@ class HomeFragment : Fragment(), CategoryAdapter.OnItemClickListener,ProductAdap
                 categoryAdapter.submitList(it)
             })
             viewModel.categoryType.value = "1"
-            viewModel.productByType.observe(viewLifecycleOwner,{
-                it.map {
-
-                }
+            viewModel.productByType.observe(viewLifecycleOwner, {
+                productAdapter.submitList(it[0].product)
             })
         }
     }
 
     override fun onItemClick(category: Category) {
+        binding.root.snackBar("Clicked Category : ${category.name}")
         viewModel.categoryType.value = category.categoryId.toString()
     }
 
     override fun onItemClick(product: Product) {
-
+        binding.root.snackBar("Clicked Product : ${product.name}")
+        val data = Bundle().apply {
+            putParcelable("DATA", product)
+        }
+        findNavController().navigate(R.id.action_navigation_home_to_detailFragment, data)
     }
 }

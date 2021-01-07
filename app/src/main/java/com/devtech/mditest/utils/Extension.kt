@@ -1,14 +1,11 @@
 package com.devtech.mditest.utils
 
 import android.graphics.PorterDuff
-
 import androidx.core.content.ContextCompat
-
 import android.graphics.PorterDuffColorFilter
-
-import android.graphics.drawable.Drawable
-
+import android.view.View
 import android.widget.TextView
+import com.google.android.material.snackbar.Snackbar
 
 
 fun TextView.changeDrawableColor(color: Int) {
@@ -18,4 +15,8 @@ fun TextView.changeDrawableColor(color: Int) {
                 PorterDuffColorFilter(ContextCompat.getColor(this.context, color), PorterDuff.Mode.SRC_IN)
         }
     }
+}
+
+fun View.snackBar(message: String) {
+    Snackbar.make(this, message, Snackbar.LENGTH_SHORT).show()
 }
